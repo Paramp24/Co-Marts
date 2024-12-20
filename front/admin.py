@@ -5,6 +5,7 @@ from .forms import SignUpForm
 from .models import Profile
 
 
+# Add all user information to the admin dashboard
 
 class ProfileInline(admin.StackedInline):
     model = Profile
