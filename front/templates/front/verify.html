@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form_wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .input_field {
+            margin-bottom: 15px;
+            text-align: center; /* Center the input field */
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%; /* Make input fields full width */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_wrapper">
+        <h2>Verification Code</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input_field">
+                {{ form.code }}
+                {% if form.code.errors %}
+                    <div class="error">{{ form.code.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{% url 'home' %}">Go to Home</a>
+    </div>
+</body>
+</html>
